@@ -21,7 +21,7 @@ const { email, password } = require("./auth");
   push$.subscribe(() => {
     console.log("detected mind command!");
     exec(
-      "git add . && git commit -m ':rocket:' && git push -u origin master -f",
+      "npm test && git add . && git commit -m ':rocket:' && git push -u origin master -f",
       (err, stdout, stderr) => {
         console.log(err ? stderr : stdout);
         process.exit();

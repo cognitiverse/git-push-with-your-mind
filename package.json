@@ -7,7 +7,8 @@
     "git-push-with-your-mind": "./bin/git-push-with-your-mind"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node test/hookup_spec.js"
   },
   "repository": {
     "type": "git",
