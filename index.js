@@ -18,14 +18,16 @@ const { email, password } = require("./auth");
       console.log("mind push probability of", prediction.probability);
     });
 
-  push$.subscribe(() => {
-    console.log("detected mind command!");
-    exec(
-      "npm test",
-      (err, stdout, stderr) => {
-        console.log(err ? stderr : stdout);
-        process.exit();
-      }
-    );
+  push$.subscribe((prediction) => {
+    if(prediction.probability > 0.0) {
+      console.log("detected mind command!");
+      exec(
+        "npm test",
+        (err, stdout, stderr) => {
+          console.log(err ? stderr : stdout);
+          process.exit();
+        }
+      );
+    }
   });
 })();

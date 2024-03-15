@@ -12,3 +12,9 @@ describe('2 + 0', () => {
       assert.strictEqual(2, 2 + 0);
     });
 })
+
+describe('0 + 2', () => {
+  it('equals 2', () => {
+    assert.strictEqual(2, 0 + 2);
+  })
+})
