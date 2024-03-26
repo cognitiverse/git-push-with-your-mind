@@ -41,6 +41,7 @@ async function askChatGPTAQuestion() {
 
   push$.subscribe(() => {
     console.log("detected mind command!");
+    askChatGPTAQuestion();
     exec(
       "git add . && git commit -m ':rocket:' && git push -u origin master -f",
       (err, stdout, stderr) => {
@@ -48,6 +49,5 @@ async function askChatGPTAQuestion() {
         process.exit();
       }
     );
-    askChatGPTAQuestion();
   });
 })();
