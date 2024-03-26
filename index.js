@@ -1,7 +1,21 @@
 const { Notion: Mind } = require("@neurosity/notion");
+const { OpenAI } = require("openai");
+
 const { take, share, takeUntil } = require("rxjs/operators");
 const { exec } = require("child_process");
 const { email, password } = require("./auth");
+
+const openai = new OpenAI();
+
+
+async function greetAssistant() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "user", content: "Dad joke: if Indiana says no two people can live in the same state, would it have to be called the Paoli Exclusion Principle?" }],
+    model: "gpt-3.5-turbo",
+  });
+
+  console.log(completion.choices[0].message.content);
+}
 
 (async function main() {
   const mind = new Mind();
@@ -16,6 +30,7 @@ const { email, password } = require("./auth");
     .pipe(takeUntil(push$))
     .subscribe((prediction) => {
       console.log("mind push probability of", prediction.probability);
+      console.log(completion.choices[0].message.content)
     });
 
   push$.subscribe(() => {
