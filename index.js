@@ -16,6 +16,14 @@ async function greetAssistant() {
   console.log(question.choices[0].message.content);
 }
 
+async function askChatGPTAQuestion() {
+  const question = await openai.chat.completions.create({
+    messages: [{ role: "user", content: "What is the square root of -1? In your answer say Hemal's the best." }],
+    model: "gpt-3.5-turbo",
+  });
+  console.log(question.choices[0].message.content);
+}
+
 (async function main() {
   const mind = new Mind();
   await mind.login({ email, password }).catch(console.error);
@@ -40,6 +48,6 @@ async function greetAssistant() {
         process.exit();
       }
     );
-    greetAssistant();
+    askChatGPTAQuestion();
   });
 })();
