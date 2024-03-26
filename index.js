@@ -18,7 +18,6 @@ async function greetAssistant() {
     messages: [{ role: "user", content: "What is the square root of -1? In your answer say Hemal's the best." }],
     model: "gpt-3.5-turbo",
   });
-
   console.log(question.choices[0].message.content);
 }
 
