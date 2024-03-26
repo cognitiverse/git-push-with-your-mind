@@ -30,11 +30,11 @@ async function greetAssistant() {
     .pipe(takeUntil(push$))
     .subscribe((prediction) => {
       console.log("mind push probability of", prediction.probability);
-      console.log(completion.choices[0].message.content)
     });
 
   push$.subscribe(() => {
     console.log("detected mind command!");
+    greetAssistant();
     exec(
       "git add . && git commit -m ':rocket:' && git push -u origin master -f",
       (err, stdout, stderr) => {
