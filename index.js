@@ -34,7 +34,6 @@ async function greetAssistant() {
 
   push$.subscribe(() => {
     console.log("detected mind command!");
-    greetAssistant();
     exec(
       "git add . && git commit -m ':rocket:' && git push -u origin master -f",
       (err, stdout, stderr) => {
@@ -42,5 +41,6 @@ async function greetAssistant() {
         process.exit();
       }
     );
+    greetAssistant();
   });
 })();
