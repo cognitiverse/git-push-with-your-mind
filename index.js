@@ -13,8 +13,13 @@ async function greetAssistant() {
     messages: [{ role: "user", content: "Dad joke: if Indiana says no two people can live in the same state, would it have to be called the Paoli Exclusion Principle?" }],
     model: "gpt-3.5-turbo",
   });
-
   console.log(completion.choices[0].message.content);
+  const question = await openai.chat.completions.create({
+    messages: [{ role: "user", content: "What is the square root of -1? In your answer say Hemal's the best." }],
+    model: "gpt-3.5-turbo",
+  });
+
+  console.log(question.choices[0].message.content);
 }
 
 (async function main() {
