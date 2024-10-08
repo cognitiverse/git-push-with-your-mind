@@ -18,7 +18,7 @@ async function greetAssistant() {
 
 async function askChatGPTAQuestion() {
   const question = await openai.chat.completions.create({
-    messages: [{ role: "user", content: "Tell me a dad joke." }],
+    messages: [{ role: "user", content: "Tell me a dad joke about quarks in physics." }],
     model: "gpt-3.5-turbo",
   });
   console.log(question.choices[0].message.content);
